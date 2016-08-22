@@ -1,6 +1,12 @@
+####Add Shared volume in settings
+
+####Add more CPU's if you get errors on startup
 
 ####Need Virtualbox extension pack installed first
+VirtualBox > Devices > Insert Guest Additions CD image
 
+####After adding shared directory:
+sudo adduser <username> vboxsf
 
 ####To get a normally plug and play device to work:
 
