@@ -18,12 +18,12 @@ sudo adduser <username> vboxsf
 6. Your usb device should now be visible, click to add that.
 7. Done.
 
-###copy sdcard using ubuntu
+###copy sdcard to harddrive
 ```
 sudo dd bs=4M if=/dev/sdb | gzip > /home/your_username/image`date +%d%m%y`.gz
 ```
 
-###burn copy
+###burn image to sdcard
 ```
 sudo gzip -dc /home/your_username/image.gz | sudo dd bs=4M of=/dev/sdb
 ```

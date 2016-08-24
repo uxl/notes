@@ -1,29 +1,26 @@
 ###Install npm and latest node
 ```
 wget https://nodejs.org/dist/v4.3.1/node-v4.3.1-linux-armv6l.tar.xz tar xf node-v4.3.1-linux-armv6l.tar.xz cd node-v4.3.1-linux-armv6l/
-``` 
+```
 ```
 sudo cp -R * /usr/local
 ```
 Check installation:
 ```node -v```  
-  
 
 
-  
+
+
 ###Start Tmux fullscreen
 
 
 ####install requirements  
-
-
-    sudo apt-get install -y tmux 
+    sudo apt-get install -y tmux
     sudo pip install tmuxp
     sudo apt-get wmctrl
     sudo apt-get install -y htop
     sudo apt-get install -y iftop
-   
-   
+
 ####scripts
     **create shell script to launch tmux**
     ```
@@ -75,7 +72,7 @@ windows:
 	sudo dpkg-reconfigure keyboard-configuration
 
 - **select**  
-MacBook/MacBook Pro (Intl) 
+MacBook/MacBook Pro (Intl)
 
 - **select**  
 English (US) - English (Macintosh)
@@ -111,13 +108,13 @@ wmctrl -r :ACTIVE: -b remove,fullscreen
 ```
 
 #### LXterminal hide menu and scrollbars
-To hide menu and scrollbar go into terminal preferences 
+To hide menu and scrollbar go into terminal preferences
 
 
 
 ####Tmux cheatsheet
 sudo apt-get install -y tmux
-Ctrl -b 
+Ctrl -b
 Create new tmux and name it brian:
 Tmux new -s brian
 Close session
@@ -163,5 +160,6 @@ That'll get you past the warnings and let Homebrew install the iftop package. If
 export PATH=${PATH}:/usr/local/sbin
 To the end of the file to prepend /usr/local/sbin to each new shell you open.
 
-
-
+#Powerline-status install guide
+Allows for ip address in bottom bar of tmux
+http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
