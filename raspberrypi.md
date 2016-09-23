@@ -1,3 +1,17 @@
+#Setup Pi
+
+###change password
+```
+passwd
+```
+
+###bonjour name
+Change name from raspberrypi to a name that is more meaningful
+```
+sudo nano /etc/hostname
+sudo nano /etc/hosts
+```
+
 ###Install npm and latest node
 ```
 wget https://nodejs.org/dist/v4.3.1/node-v4.3.1-linux-armv6l.tar.xz tar xf node-v4.3.1-linux-armv6l.tar.xz cd node-v4.3.1-linux-armv6l/
@@ -8,7 +22,14 @@ sudo cp -R * /usr/local
 Check installation:
 ```node -v```  
 
+###Flip Raspberry Pi TouchScreen
+```lcd_rotate=2```
 
+###Disable rainbow boot screen
+```sudo nano /home/pi/config.txt```
+
+add the following line:
+```disable_splash=1```
 
 
 ###Start Tmux fullscreen
