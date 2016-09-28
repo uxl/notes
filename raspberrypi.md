@@ -1,3 +1,23 @@
+#Set Static IP Address
+```
+sudo nano /etc/dhcpcd.conf
+```
+Add the following at the bottom
+```
+interface eth0
+
+static ip_address=192.168.0.10/24
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1
+
+interface wlan0
+
+static ip_address=192.168.0.10/24
+static routers=192.168.0.1
+static domain_name_servers=192.168.0.1
+```
+
+
 #Setup Pi
 
 ###change password
