@@ -36,21 +36,44 @@ sudo nano /etc/hosts
 ```
 wget https://nodejs.org/dist/v4.3.1/node-v4.3.1-linux-armv6l.tar.xz tar xf node-v4.3.1-linux-armv6l.tar.xz cd node-v4.3.1-linux-armv6l/
 ```
+
 ```
 sudo cp -R * /usr/local
 ```
 Check installation:
 ```node -v```  
 
-###Flip Raspberry Pi TouchScreen
-```lcd_rotate=2```
+
 
 ###Disable rainbow boot screen
-```sudo nano /home/pi/config.txt```
+```
+sudo nano /boot/config.txt
+```
 
 add the following line:
-```disable_splash=1```
+```
+disable_splash=1
+```
+###Flip Raspberry Pi TouchScreen
+```
+sudo nano /boot/config.txt
+```
+add the following line:
+```
+lcd_rotate=2
+```
 
+###remove raspberry pi logos at top( one for each core)
+```
+sudo su
+cd /boot
+nano cmdline.txt
+```
+
+add to beginning of line
+```
+logo.nologo
+```
 
 ###Start Tmux fullscreen
 
@@ -58,7 +81,7 @@ add the following line:
 ####install requirements  
     sudo apt-get install -y tmux
     sudo pip install tmuxp
-    sudo apt-get wmctrl
+    sudo apt-get install wmctrl
     sudo apt-get install -y htop
     sudo apt-get install -y iftop
 
@@ -66,8 +89,13 @@ add the following line:
     **create shell script to launch tmux**
     ```
     !#/bin/bash
-    tmuxp load nodeapp.yaml
+    tmuxp load start.yaml
     ```
+#### install vim
+```
+sudo apt-get install vim
+curl http://j.mp/spf13-vim3 -L -o - | sh
+```
 
 #### update autostart
     sudo vim /home/pi/.config/lxsession/LXDE-pi/autostart
@@ -81,9 +109,9 @@ tmuxp freeze
 tmuxp load <yoursavedconfig>.yaml
 
 
-#### nodeapp.yaml
+#### start.yaml
 ```
-vim /home/pi/.tmuxp/nodeapp.yaml
+vim /home/pi/.tmuxp/start.yaml
 ```
 **add**
 ```
@@ -104,7 +132,7 @@ windows:
   - shell_command:
       - "sudo iftop"
   start_directory: /home/pi/app
-  window_name: python
+  window_name: start
 ```
 
 
@@ -154,18 +182,22 @@ To hide menu and scrollbar go into terminal preferences
 
 
 ####Tmux cheatsheet
+```
 sudo apt-get install -y tmux
+```
+```
 Ctrl -b
-Create new tmux and name it brian:
-Tmux new -s brian
+```
+
+Create new tmux and name it start:
+Tmux new -s start
 Close session
 Ctrl-b type d twice
 Reattach
-Tmux attach -t brian
+Tmux attach -t start
 
 %  vertical split
 "  horizontal split
-
 o  swap panes
 q  show pane numbers
 x  kill pane
@@ -181,8 +213,6 @@ C-b c new frame (new shell is started)
 C-b n next frame
 C-b l last frame
 C-b b send C-b to the running application
-
-
 
 sudo tmux tmux new-session -s diego
 CTRL + b -> %
@@ -201,6 +231,10 @@ That'll get you past the warnings and let Homebrew install the iftop package. If
 export PATH=${PATH}:/usr/local/sbin
 To the end of the file to prepend /usr/local/sbin to each new shell you open.
 
-#Powerline-status install guide
-Allows for ip address in bottom bar of tmux
+#Install Powerline-status:
+(Allows for ip address in bottom bar of tmux)
+```
+sudo pip install powerline-status
+```
+
 http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
