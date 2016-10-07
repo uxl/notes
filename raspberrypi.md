@@ -25,11 +25,25 @@ static domain_name_servers=192.168.0.1
 passwd
 ```
 
-###bonjour name
+###network address update (pi name modification using bonjour & avahi)
 Change name from raspberrypi to a name that is more meaningful
 ```
 sudo nano /etc/hostname
+```
+change 'raspberrypi' to desired device name (ex: jeremy)
+
+```
 sudo nano /etc/hosts
+
+sudo apt-get install avahi-daemon
+sudo apt-get install avahi-utils
+ctrl + c to cancel process
+avahi-resolve --address <ip.address>
+sudo reboot
+```
+
+```
+from CPU ssh pi@new_hostname
 ```
 
 ###Install npm and latest node
