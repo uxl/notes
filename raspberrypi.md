@@ -54,6 +54,10 @@ add the following line:
 ```
 disable_splash=1
 ```
+###Rotate Pi Screen through HDMI
+```
+display_rotate=1
+```
 ###Flip Raspberry Pi TouchScreen
 ```
 sudo nano /boot/config.txt
@@ -62,6 +66,7 @@ add the following line:
 ```
 lcd_rotate=2
 ```
+
 
 ###remove raspberry pi logos at top( one for each core)
 ```
