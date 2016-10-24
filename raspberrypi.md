@@ -9,6 +9,34 @@ sudo nano /etc/kbd/config
 BLANK_TIME=0
 POWERDOWN_TIME=0
 ```
+
+```
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+```
+
+```
+#@xscreensaver -no-splash
+@xset s off
+@xset -dpms
+@xset s noblank
+```
+
+#Turn off cursor
+```
+sudo apt-get install unclutter
+
+```
+```
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+```
+```
+@unclutter -idle 0.01 -root
+```
+
+```
+#@xscreensaver -no-splash
+
+
 #Set Static IP Address
 ```
 sudo nano /etc/dhcpcd.conf
