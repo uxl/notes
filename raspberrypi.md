@@ -1,3 +1,14 @@
+
+#Disable Screen Blanking (Screensaver)
+Disable text terminals from blanking
+change two settings by 
+```
+sudo nano /etc/kbd/config
+```
+```
+BLANK_TIME=0
+POWERDOWN_TIME=0
+```
 #Set Static IP Address
 ```
 sudo nano /etc/dhcpcd.conf
@@ -26,14 +37,14 @@ passwd
 ```
 
 ###network address update (pi name modification using bonjour & avahi)
-Change name from raspberrypi to a name that is more meaningful
+Change name from raspberrypi to a name that is more meaningful in below:
 ```
+sudo nano /etc/hosts
 sudo nano /etc/hostname
 ```
 change 'raspberrypi' to desired device name (ex: jeremy)
 
 ```
-sudo nano /etc/hosts
 
 sudo apt-get install avahi-daemon
 sudo apt-get install avahi-utils
@@ -48,12 +59,12 @@ from CPU ssh pi@new_hostname
 
 ###Install npm and latest node
 ```
-wget https://nodejs.org/dist/v4.3.1/node-v4.3.1-linux-armv6l.tar.xz tar xf node-v4.3.1-linux-armv6l.tar.xz cd node-v4.3.1-linux-armv6l/
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+```
+```
+sudo apt install -y nodejs
 ```
 
-```
-sudo cp -R * /usr/local
-```
 Check installation:
 ```node -v```  
 
@@ -257,3 +268,14 @@ sudo pip install powerline-status
 ```
 
 http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
+
+#Pi Jessie Pixel autostart
+check for terminal if not initial screen run command
+```
+vim /home/pi/.profile
+```
+```
+if [[ ! $TERM =~ screen ]] ; then
+	tmuxp load ~/.tmuxp/start.yaml
+fi
+```
