@@ -35,13 +35,14 @@ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 
 ```
 #@xscreensaver -no-splash
-
+```
 
 #Set Static IP Address
 ```
 sudo nano /etc/dhcpcd.conf
 ```
 Add the following at the bottom
+
 ```
 interface eth0
 
@@ -73,7 +74,6 @@ sudo nano /etc/hostname
 change 'raspberrypi' to desired device name (ex: jeremy)
 
 ```
-
 sudo apt-get install avahi-daemon
 sudo apt-get install avahi-utils
 ctrl + c to cancel process
@@ -81,8 +81,9 @@ avahi-resolve --address <ip.address>
 sudo reboot
 ```
 
+from CPU 
 ```
-from CPU ssh pi@new_hostname
+ssh pi@new_hostname
 ```
 
 ###Install npm and latest node
@@ -157,7 +158,7 @@ curl http://j.mp/spf13-vim3 -L -o - | sh
 
 #### update autostart
     sudo vim /home/pi/.config/lxsession/LXDE-pi/autostart
-    @lxterminal --command "/home/pi/app/startup_terminal.sh
+    @lxterminal --command "/home/pi/dev/startup_terminal.sh"
 
 #### tmuxp
 ***save***  
