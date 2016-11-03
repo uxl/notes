@@ -81,7 +81,7 @@ avahi-resolve --address <ip.address>
 sudo reboot
 ```
 
-from CPU 
+From remote on same network
 ```
 ssh pi@new_hostname
 ```
@@ -90,12 +90,15 @@ ssh pi@new_hostname
 ```
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 ```
+
 ```
-sudo apt install -y nodejs
+sudo apt-get install -y nodejs
 ```
 
 Check installation:
-```node -v```  
+```
+node -v
+```  
 
 
 
@@ -108,6 +111,7 @@ add the following line:
 ```
 disable_splash=1
 ```
+
 ###Rotate Pi Screen through HDMI
 ```
 display_rotate=1
@@ -307,4 +311,12 @@ vim /home/pi/.profile
 if [[ ! $TERM =~ screen ]] ; then
 	tmuxp load ~/.tmuxp/start.yaml
 fi
+```
+
+#Update Python
+```
+sudo apt-get install python-dev
+curl -O https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+sudo pip install virtualenv
 ```
