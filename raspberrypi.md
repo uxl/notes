@@ -1,12 +1,22 @@
 
 #Disable Screen Blanking (Screensaver)
 Disable text terminals from blanking
-change two settings by 
+setterm - terminal blanking
+```
+nano ~/.bashrc
+```
+add 
+```
+setterm -blank 0 -powerdown 0
+```
+
+kbd configuration - terminal blanking
 ```
 sudo nano /etc/kbd/config
 ```
 ```
 BLANK_TIME=0
+BLANK_DPMS=off
 POWERDOWN_TIME=0
 ```
 
@@ -21,6 +31,23 @@ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 @xset s noblank
 ```
 
+#TouchScreen turn off blanking
+
+Use nano
+```
+sudo nano /etc/lightdm/lightdm.conf
+```
+Look for the line 
+```
+#xserver-command=X
+``` 
+Change it to 
+```
+xserver-command=X -s 0 -dpms
+```
+It should be at line 87 if things don't change.
+Save and reboot.
+
 #Turn off cursor
 ```
 sudo apt-get install unclutter
@@ -31,10 +58,6 @@ sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ```
 ```
 @unclutter -idle 0.01 -root
-```
-
-```
-#@xscreensaver -no-splash
 ```
 
 #Set Static IP Address
@@ -299,6 +322,15 @@ To the end of the file to prepend /usr/local/sbin to each new shell you open.
 ```
 sudo pip install powerline-status
 ```
+show .tmux.conf
+```
+cd ~/
+tmux show -g | cat > ~/.tmux.conf
+```
+configure
+```
+https://github.com/passcod/tmux-powerline/blob/master/README.md
+```
 
 http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin
 
@@ -319,4 +351,75 @@ sudo apt-get install python-dev
 curl -O https://bootstrap.pypa.io/get-pip.py
 sudo python get-pip.py
 sudo pip install virtualenv
+```
+
+#NeoPixel over PWM
+
+##Compile & Install rpi_ws281x Library
+These steps will show you how to compile the rpi_ws281x library and install a Python wrapper around it.
+
+To start, connect to a terminal on the Raspberry Pi and execute the following commands to install some dependencies:
+
+```
+sudo apt-get update
+sudo apt-get install build-essential python-dev git scons swig
+```
+
+Now run these commands to download the library source and compile it:
+```
+git clone https://github.com/jgarff/rpi_ws281x.git
+cd rpi_ws281x
+scons
+``` 
+
+After running the scons command above you should see the library successfully compiled.  Next you can install the Python library by executing:
+```
+cd python
+sudo python setup.py install
+```
+After running those commands the Python wrapper around the rpi_ws281x library should be generated and installed.
+
+###On Raspberry Pi3 you may need to blacklist the audio driver
+
+#TMUX configuration for powerline
+Requires you to update .tmux.conf file with below script
+
+```
+source ~/.local/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf
+set-option -g default-terminal "screen-256color"
+
+set -g @plugin 'seebi/tmux-colors-solarized'
+
+# show host name and IP address on left side of status bar
+set -g status-left-length 70
+set -g status-left "#[fg=green]: #h : #[fg=brightblue]#(curl icanhazip.com) #[fg=yellow]#(ifcon#     #set -g status-left "#[fg=green]: #h : #[fg=brightblue]#(curl icanhazip.com) #[fg=yellow]#(#
+
+#### COLOUR (Solarized dark)
+# default statusbar colors
+set-option -g status-bg black #base02
+set-option -g status-fg yellow #yellow
+set-option -g status-attr default
+# default window title colors
+set-window-option -g window-status-fg brightblue #base0
+set-window-option -g window-status-bg default
+#set-window-option -g window-status-attr dim
+# active window title colors
+set-window-option -g window-status-current-fg brightred #orange
+set-window-option -g window-status-current-bg default
+#set-window-option -g window-status-current-attr bright
+# pane border
+set-option -g pane-border-fg black #base02
+set-option -g pane-active-border-fg brightgreen #base01
+
+# message text
+set-option -g message-bg black #base02
+set-option -g message-fg brightred #orange
+
+# pane number display
+set-option -g display-panes-active-colour blue #blue
+set-option -g display-panes-colour brightred #orange
+# clock
+set-window-option -g clock-mode-colour green #green
+# bell
+set-window-option -g window-status-bell-style fg=black,bg=red #base02, red
 ```
