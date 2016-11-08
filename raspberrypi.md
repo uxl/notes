@@ -163,6 +163,7 @@ add to beginning of line
 ```
 logo.nologo
 ```
+turn off jessie pixel splash by deleting word "splash" from cmdline.txt
 
 ###Start Tmux fullscreen
 
