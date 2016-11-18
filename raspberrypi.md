@@ -427,3 +427,20 @@ set-window-option -g clock-mode-colour green #green
 # bell
 set-window-option -g window-status-bell-style fg=black,bg=red #base02, red
 ```
+
+Fix login loop:
+```
+sudo mv ~/.Xauthority ~/.Xauthority.backup
+sudo service lightdm restart
+```
+
+
+#Install ngrok on Raspberry PI
+```
+sudo wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
+$unzip ngrok_2.0.19_linux_arm.zip
+
+./ngrok authtoken <put token from dashboard here>
+
+./ngrok tcp 22
+```
