@@ -169,12 +169,9 @@ turn off jessie pixel splash by deleting word "splash" from cmdline.txt
 
 
 ####install requirements  
-    sudo apt-get install -y tmux
-    sudo pip install tmuxp
-    sudo apt-get install wmctrl
-    sudo apt-get install -y htop
-    sudo apt-get install -y iftop
-
+    sudo apt-get install -y tmux wmctrl htop iftop vim
+    sudo pip install tmuxp	
+    
 ####scripts
     **create shell script to launch tmux**
     ```
@@ -189,7 +186,7 @@ curl http://j.mp/spf13-vim3 -L -o - | sh
 
 #### update autostart
     sudo vim /home/pi/.config/lxsession/LXDE-pi/autostart
-    @lxterminal --command "/home/pi/dev/startup_terminal.sh"
+    @lxterminal --command "/home/pi/dev/start.sh"
 
 #### tmuxp
 ***save***  
@@ -443,4 +440,24 @@ $unzip ngrok_2.0.19_linux_arm.zip
 ./ngrok authtoken <put token from dashboard here>
 
 ./ngrok tcp 22
+```
+
+#enable serial connection on pi3
+Use:
+```minicom -b 9600 -o -D /dev/serial0```
+
+Follow config here http://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/
+
+#python deamon
+```
+sudo easy_install supervisor
+```
+or
+```
+sudo pip install supervisor
+```
+Generate config file
+```
+sudo su
+echo_supervisord_conf > /etc/supervisord.conf
 ```
