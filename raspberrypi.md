@@ -461,3 +461,9 @@ Generate config file
 sudo su
 echo_supervisord_conf > /etc/supervisord.conf
 ```
+
+#change time
+Can raspi-config to change region but when that doesn't work 
+```
+sudo date -s "14 DEC 2016 13:26:00"
+```
