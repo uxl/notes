@@ -1,4 +1,6 @@
 
+Digital Fab Lab
+
 #Disable Screen Blanking (Screensaver)
 Disable text terminals from blanking
 setterm - terminal blanking
@@ -33,6 +35,18 @@ sudo nano ~/.config/lxsession/LXDE-pi/autostart
 @xset -dpms
 @xset s noblank
 ```
+###Turn off cursor
+```
+sudo apt-get install unclutter
+
+```
+```
+sudo nano ~/.config/lxsession/LXDE-pi/autostart
+```
+add
+```
+@unclutter -idle 0.01 -root
+```
 
 #TouchScreen turn off blanking
 
@@ -51,17 +65,6 @@ xserver-command=X -s 0 -dpms
 It should be at line 87 if things don't change.
 Save and reboot.
 
-#Turn off cursor
-```
-sudo apt-get install unclutter
-
-```
-```
-sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
-```
-```
-@unclutter -idle 0.01 -root
-```
 
 #Set Static IP Address
 ```
@@ -462,8 +465,49 @@ sudo su
 echo_supervisord_conf > /etc/supervisord.conf
 ```
 
-#change time
+#change time clock
 Can raspi-config to change region but when that doesn't work 
 ```
 sudo date -s "14 DEC 2016 13:26:00"
+```
+
+or 
+
+```
+sudo apt-get install ntpdate
+sudo ntpdate -u ntp.ubuntu.com
+```
+
+#copy files via ssh
+```scp -p port number pi@ipaddress:file localpath```
+
+#7 inch 800*480 and 1024*600 Capacitive Touch Screen HDMI
+
+###800*400 
+```
+sudo nano /boot/config.txt
+```
+```
+hdmi_cvt=800 480 60
+```
+###1024*600
+```
+sudo nano /boot/config.txt
+```
+```
+max_usb_current=1
+hdmi_group=2
+hdmi_mode=87
+hdmi_cvt 1024 600 60 6 0 0 0
+```
+
+
+###copy sdcard to harddrive
+```
+sudo dd bs=4M if=/dev/sdb | gzip > /home/your_username/image`date +%d%m%y`.gz
+```
+
+###burn image to sdcard
+```
+sudo gzip -dc /home/your_username/image.gz | sudo dd bs=4M of=/dev/sdb
 ```
