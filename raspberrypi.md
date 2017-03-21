@@ -172,15 +172,17 @@ turn off jessie pixel splash by deleting word "splash" from cmdline.txt
 
 
 ####install requirements  
-    sudo apt-get install -y tmux wmctrl htop iftop vim
-    sudo pip install tmuxp	
+```
+sudo apt-get install -y tmux wmctrl htop iftop vim
+sudo pip install tmuxp	
+```
     
 ####scripts
-    **create shell script to launch tmux**
-    ```
-    !#/bin/bash
-    tmuxp load start.yaml
-    ```
+**create shell script to launch tmux**
+```
+!#/bin/bash
+tmuxp load start.yaml
+```
 #### install vim
 ```
 sudo apt-get install vim
