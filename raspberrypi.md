@@ -513,3 +513,15 @@ sudo dd bs=4M if=/dev/sdb | gzip > /home/your_username/image`date +%d%m%y`.gz
 ```
 sudo gzip -dc /home/your_username/image.gz | sudo dd bs=4M of=/dev/sdb
 ```
+
+###install netatalk enables Zeroconf (aka Bonjour) networking, so the system appears on the network as “mypi.local” (or whatever hostname you configured) instead of a numeric IP address:
+
+sudo apt-get -y install netatalk
+
+As a bonus for Mac users, this also enables AppleTalk sharing, which can make it easier to transfer files to and from the system if needed.
+
+With netatalk installed, you can easily access the Raspberry Pi remotely using an ssh client from another system on the network. For example, using the Terminal application in Mac OS X, one would type:
+
+ssh pi@mypi.local
+
+You should get a password prompt. Once logged in, you can perform all administration duties remotely (including the steps that follow), and the monitor and keyboard are no longer needed on the Raspberry Pi.
