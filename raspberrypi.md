@@ -525,3 +525,29 @@ With netatalk installed, you can easily access the Raspberry Pi remotely using a
 ssh pi@mypi.local
 
 You should get a password prompt. Once logged in, you can perform all administration duties remotely (including the steps that follow), and the monitor and keyboard are no longer needed on the Raspberry Pi.
+
+###Twitch Stream
+```
+sudo apt-get install libmp3lame-dev; sudo apt-get install autoconf; sudo apt-get install libtool; sudo apt-get install checkinstall; sudo apt-get install libssl-dev
+
+sudo apt-get install libx264-142 libx264-dev
+
+mkdir /home/pi/src
+cd /home/pi/src
+git clone git://git.videolan.org/x264
+cd x264
+./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl
+make
+sudo make install
+
+cd
+cd /home/pi/src
+sudo git clone git://source.ffmpeg.org/ffmpeg.git
+cd ffmpeg
+sudo ./configure --enable-gpl --enable-nonfree --enable-libx264 --enable-libmp3lame
+sudo make -j$(nproc) && sudo make install
+
+raspivid -o - -t 0 -vf -hf -fps 30 -b 6000000 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 128k -g 50 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/YOURCODEHERE
+```
+
+rtmp://<twitch-ingest-server>/app/<stream-key>
