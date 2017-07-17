@@ -551,3 +551,13 @@ raspivid -o - -t 0 -vf -hf -fps 30 -b 6000000 | ffmpeg -re -ar 44100 -ac 2 -acod
 ```
 
 ```rtmp://<twitch-ingest-server>/app/<stream-key>```
+
+
+##turn off internal wifi and bluetooth on pi3
+```sudo nano /boot/config.txt```
+add:
+```
+# turn wifi and bluetooth off
+dtoverlay=pi3-disable-wifi
+dtoverlay=pi3-disable-bt
+```
