@@ -554,6 +554,7 @@ raspivid -o - -t 0 -vf -hf -fps 30 -b 6000000 | ffmpeg -re -ar 44100 -ac 2 -acod
 
 
 ##turn off internal wifi and bluetooth on pi3
+update firmware first
 ```sudo nano /boot/config.txt```
 add:
 ```
