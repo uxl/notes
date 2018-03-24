@@ -559,5 +559,8 @@ dtoverlay=pi3-disable-wifi
 dtoverlay=pi3-disable-bt
 ```
 
-#test for camera from command
-```vcgencmd get_camera```
+##test for camera from command
+
+```
+vcgencmd get_camera
+```
