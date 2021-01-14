@@ -182,9 +182,10 @@ Add TMUXP to path
 tmuxp load start.yaml
 ```
 #### install vim
+Theme: https://github.com/spf13/spf13-vim
 ```
 sudo apt-get install vim
-curl http://j.mp/spf13-vim3 -L -o - | sh
+curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
 ```
 
 #### update autostart
@@ -437,8 +438,8 @@ sudo service lightdm restart
 
 #Install ngrok on Raspberry PI
 ```
-sudo wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
-$unzip ngrok_2.0.19_linux_arm.zip
+sudo apt-get update -y
+sudo apt-get install -y ngrok-client
 
 ./ngrok authtoken <put token from dashboard here>
 
