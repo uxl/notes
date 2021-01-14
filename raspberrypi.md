@@ -438,11 +438,11 @@ sudo service lightdm restart
 
 #Install ngrok on Raspberry PI
 ```
-sudo apt-get update -y
-sudo apt-get install -y ngrok-client
+wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip
+unzip ngro*
+cd ngro*
 
 ./ngrok authtoken <put token from dashboard here>
-
 ./ngrok tcp 22
 ```
 
