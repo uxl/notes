@@ -25,7 +25,7 @@ POWERDOWN_TIME=0
 ```
 sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 or 
-(seems to work for pixel)
+(seems to work for pixel and newer)
 sudo nano ~/.config/lxsession/LXDE-pi/autostart
 ```
 
