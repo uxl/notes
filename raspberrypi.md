@@ -567,3 +567,8 @@ dtoverlay=pi3-disable-bt
 ```
 vcgencmd get_camera
 ```
+
+## Print Server
+```
+https://medium.com/@alexanderbelov/how-to-use-your-brother-printer-with-cups-on-raspberry-pi-5b712cc2b4e6
+```
