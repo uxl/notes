@@ -515,7 +515,9 @@ sudo gzip -dc /home/your_username/image.gz | sudo dd bs=4M of=/dev/sdb
 
 ###install netatalk enables Zeroconf (aka Bonjour) networking, so the system appears on the network as “mypi.local” (or whatever hostname you configured) instead of a numeric IP address:
 
+```
 sudo apt-get -y install netatalk
+```
 
 As a bonus for Mac users, this also enables AppleTalk sharing, which can make it easier to transfer files to and from the system if needed.
 
