@@ -182,10 +182,10 @@ Add TMUXP to path
 tmuxp load start.yaml
 ```
 #### install vim
-Theme: https://github.com/spf13/spf13-vim
+Theme: https://spacevim.org/
 ```
 sudo apt-get install vim
-curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+curl -sLf https://spacevim.org/install.sh | bash
 ```
 
 #### update autostart
